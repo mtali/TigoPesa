@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.mtali.tigopesa.ui.theme.Blue
+import com.mtali.tigopesa.ui.theme.LightBlue
 
 @Composable
 fun TigoTextField(
@@ -32,8 +32,10 @@ fun TigoTextField(
             onValueChange = onChangeValue,
             enabled = enabled,
             colors = TextFieldDefaults.outlinedTextFieldColors(
-                disabledBorderColor = Blue.copy(alpha = 0.5f),
-                textColor = Blue
+                disabledBorderColor = LightBlue.copy(0.5f),
+                textColor = LightBlue,
+                disabledTextColor = LightBlue,
+                focusedBorderColor = LightBlue,
             ),
             modifier = Modifier.fillMaxWidth()
         )

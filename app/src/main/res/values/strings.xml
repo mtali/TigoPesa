@@ -6,4 +6,9 @@
     <string name="register_device">Register Device</string>
     <string name="phone_number">Phone number</string>
     <string name="next">Next</string>
+    <string name="auth_sms_notice">You will shortly receive an SMS with authentication code. Please enter the authentication code in the field below to start using the app</string>
+    <string name="authentication_code">Authentication Code</string>
+    <string name="enter_authentication_code">Enter your received authentication code</string>
+    <string name="existing_tigo_pesa_pin">Existing Tigo Pesa PIN</string>
+    <string name="terms_condition_check_text">By checking this box you agree with terms and condirions</string>
 </resources>
