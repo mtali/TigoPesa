@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
-import com.mtali.tigopesa.feature.oboarding_choose_language.OnboardChooseLanguageRoute
+import com.mtali.tigopesa.feature.register_device.RegisterDeviceRoute
 import com.mtali.tigopesa.ui.theme.BrightestGray
 import com.mtali.tigopesa.ui.theme.TigoPesaTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = BrightestGray
                 ) {
-                    OnboardChooseLanguageRoute()
+                    RegisterDeviceRoute()
                 }
             }
         }

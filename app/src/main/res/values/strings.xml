@@ -3,4 +3,7 @@
     <string name="change_language">Chagua Lugha / Select Language</string>
     <string name="swahili">Kiswahili</string>
     <string name="english">English</string>
+    <string name="register_device">Register Device</string>
+    <string name="phone_number">Phone number</string>
+    <string name="next">Next</string>
 </resources>
