@@ -58,18 +58,11 @@ private fun OnboardChooseLanguageScreen() {
 }
 
 private fun LazyListScope.height(height: Dp) {
-    item {
-        Spacer(modifier = Modifier.height(height))
-    }
+    item { Spacer(modifier = Modifier.height(height)) }
 }
 
 private fun LazyListScope.title(modifier: Modifier = Modifier, title: Int) {
-    item {
-        Text(
-            modifier = modifier,
-            text = stringResource(id = title)
-        )
-    }
+    item { Text(modifier = modifier, text = stringResource(id = title)) }
 }
 
 
@@ -80,8 +73,8 @@ private fun LazyListScope.logo() {
             painter = painter,
             contentDescription = "logo",
             modifier = Modifier
-                .height(70.dp)
-                .width(260.dp),
+                .height(60.dp)
+                .width(200.dp),
             contentScale = ContentScale.FillBounds
         )
     }
@@ -95,13 +88,13 @@ private fun LazyListScope.languageCard(
 ) {
     item {
         Card(
-            modifier = modifier.width(300.dp),
+            modifier = modifier.width(250.dp),
             shape = RoundedCornerShape(4.dp),
             elevation = 3.dp,
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
             ) {
                 val painter = painterResource(id = drawable)
                 Image(
