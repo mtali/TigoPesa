@@ -10,8 +10,9 @@ buildscript {
         lifecycle_version = "2.6.0-rc01"
         datastore_version = '1.0.0'
         timber_version = '5.0.1'
-        ksp_version = '1.8.10-1.0.9'
         hilt_navigation_compose_version = "1.0.0"
+        ksp_version = '1.8.10-1.0.9'
+
     }
 
     dependencies {
