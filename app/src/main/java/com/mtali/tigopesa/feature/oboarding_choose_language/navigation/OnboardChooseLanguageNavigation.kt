@@ -1,0 +1,3 @@
+package com.mtali.tigopesa.feature.oboarding_choose_language.navigation
+
+class OnboardChooseLanguageNavigation

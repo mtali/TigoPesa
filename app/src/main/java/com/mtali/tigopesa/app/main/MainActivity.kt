@@ -4,11 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.mtali.tigopesa.feature.oboarding_choose_language.OnboardChooseLanguageRoute
+import com.mtali.tigopesa.ui.theme.BrightestGray
 import com.mtali.tigopesa.ui.theme.TigoPesaTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,16 +20,11 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
+                    color = BrightestGray
                 ) {
-                    Greeting("Android")
+                    OnboardChooseLanguageRoute()
                 }
             }
         }
     }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
 }
