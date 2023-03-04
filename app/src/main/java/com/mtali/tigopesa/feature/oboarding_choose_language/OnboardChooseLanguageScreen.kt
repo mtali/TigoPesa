@@ -17,9 +17,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.mtali.tigopesa.R
+import com.mtali.tigopesa.core.ui.component.height
+import com.mtali.tigopesa.core.ui.component.title
 import com.mtali.tigopesa.ui.theme.BrightestGray
 
 
@@ -55,14 +56,6 @@ private fun OnboardChooseLanguageScreen() {
             languageCard(drawable = R.drawable.flag_uk, title = R.string.english)
         }
     }
-}
-
-private fun LazyListScope.height(height: Dp) {
-    item { Spacer(modifier = Modifier.height(height)) }
-}
-
-private fun LazyListScope.title(modifier: Modifier = Modifier, title: Int) {
-    item { Text(modifier = modifier, text = stringResource(id = title)) }
 }
 
 
