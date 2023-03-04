@@ -22,7 +22,10 @@ fun GreenButton(title: Int, onClick: () -> Unit) {
             .height(44.dp)
 
     ) {
-        Text(text = stringResource(id = title).uppercase(), color = Color.White)
+        Text(
+            text = stringResource(id = title).uppercase(),
+            color = Color.White
+        )
     }
 }
 
