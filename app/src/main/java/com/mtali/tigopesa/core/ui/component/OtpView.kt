@@ -19,8 +19,8 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.mtali.tigopesa.ui.theme.Blue
-import com.mtali.tigopesa.ui.theme.LightBlue
+import com.mtali.tigopesa.core.ui.theme.Blue
+import com.mtali.tigopesa.core.ui.theme.LightBlue
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable

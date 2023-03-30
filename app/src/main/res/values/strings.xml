@@ -12,4 +12,16 @@
     <string name="existing_tigo_pesa_pin">Existing Tigo Pesa PIN</string>
     <string name="terms_condition_check_text">By checking this box you agree with terms and conditions</string>
     <string name="register">Register</string>
+    <string name="no_bundle_notice">You can use Tigo Pesa App without internet Bundle</string>
+    <string name="check_balance">Check Balance (Free)</string>
+    <string name="send_money">Send Money</string>
+    <string name="bill_pay">Bill Pay</string>
+    <string name="banking">Banking</string>
+    <string name="cash_out">Cash Out</string>
+    <string name="government_payments">Government Payments</string>
+    <string name="tigo_mobile_shop">Tigo Mobile Shop</string>
+    <string name="ipo">IPO</string>
+    <string name="finance_service">Financial Services</string>
+    <string name="international_remittance">International Remittance</string>
+    <string name="empty"> </string>
 </resources>

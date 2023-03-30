@@ -13,8 +13,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mtali.tigopesa.R
-import com.mtali.tigopesa.ui.theme.Blue
-import com.mtali.tigopesa.ui.theme.LogoYellow
+import com.mtali.tigopesa.core.ui.theme.Blue
+import com.mtali.tigopesa.core.ui.theme.LogoYellow
 
 
 @Composable
@@ -27,7 +27,7 @@ fun TigoToolbar() {
 
         ToolbarIcon(res = R.drawable.ic_star, onClick = {})
 
-        Spacer(modifier = Modifier.width(7.dp))
+        Spacer(modifier = Modifier.width(10.dp))
 
         ToolbarIcon(res = R.drawable.ic_notification, onClick = {})
     }
@@ -40,7 +40,7 @@ private fun ToolbarIcon(modifier: Modifier = Modifier, res: Int, onClick: () -> 
         contentDescription = null,
         tint = LogoYellow,
         modifier = modifier
-            .size(30.dp)
+            .size(25.dp)
             .clickable {
                 onClick()
             }

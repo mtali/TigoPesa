@@ -1,4 +1,4 @@
-package com.mtali.tigopesa.ui.theme
+package com.mtali.tigopesa.core.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

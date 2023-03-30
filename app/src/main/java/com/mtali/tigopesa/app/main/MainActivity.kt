@@ -6,9 +6,9 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
-import com.mtali.tigopesa.feature.register_device.RegisterDeviceRoute
-import com.mtali.tigopesa.ui.theme.BrightestGray
-import com.mtali.tigopesa.ui.theme.TigoPesaTheme
+import com.mtali.tigopesa.core.ui.theme.BrightestGray
+import com.mtali.tigopesa.core.ui.theme.TigoPesaTheme
+import com.mtali.tigopesa.feature.home.HomeRoute
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = BrightestGray
                 ) {
-                    RegisterDeviceRoute()
+                    HomeRoute()
                 }
             }
         }
