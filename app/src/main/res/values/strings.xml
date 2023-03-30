@@ -24,4 +24,5 @@
     <string name="finance_service">Financial Services</string>
     <string name="international_remittance">International Remittance</string>
     <string name="empty"> </string>
+    <string name="more_info">More Info</string>
 </resources>

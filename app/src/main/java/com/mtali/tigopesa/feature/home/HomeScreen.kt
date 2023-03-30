@@ -2,11 +2,15 @@ package com.mtali.tigopesa.feature.home
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,20 +23,26 @@ import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyGridScope
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
-import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AccountBalance
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.mtali.tigopesa.R
 import com.mtali.tigopesa.core.ui.component.TigoToolbar
 import com.mtali.tigopesa.core.ui.component.height
@@ -41,12 +51,17 @@ import com.mtali.tigopesa.core.ui.theme.BrightestGray
 import com.mtali.tigopesa.core.ui.theme.LogoYellow
 
 @Composable
-fun HomeRoute() {
-    HomeScreen()
+fun HomeRoute(viewModel: HomeViewModel = hiltViewModel()) {
+    val offerIndex = viewModel.currentOfferIndex
+    HomeScreen(
+        offerIndex = offerIndex
+    )
 }
 
 @Composable
-private fun HomeScreen() {
+private fun HomeScreen(
+    offerIndex: Int
+) {
     Scaffold(
         topBar = { TigoToolbar() }
     ) { padding ->
@@ -68,21 +83,77 @@ private fun HomeScreen() {
 
             featureGrid()
 
+            offers(index = offerIndex)
         }
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+fun LazyListScope.offers(count: Int = 3, index: Int = 0) {
+    item {
+        val pagerState = rememberPagerState()
+
+        LaunchedEffect(key1 = index) { pagerState.animateScrollToPage(index) }
+
+        Box {
+            HorizontalPager(pageCount = count, state = pagerState) { page ->
+                // Our page content
+                OfferCard(
+                    title = "Tigo Pesa Mastercard",
+                    description = "Get a Tigo Pesa Mastercard and enjoy the convenience of a debit card",
+                )
+            }
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 10.dp)
+                    .align(Alignment.BottomCenter),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                repeat(count) { page ->
+                    val color = if (pagerState.currentPage == page) Blue else BrightestGray
+                    Spacer(
+                        modifier = Modifier
+                            .padding(horizontal = 3.dp)
+                            .size(12.dp)
+                            .background(color, shape = CircleShape)
+
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun YellowButton(
+    modifier: Modifier = Modifier,
+    @StringRes title: Int,
+    icon: ImageVector? = null,
+    onClick: () -> Unit = {}
+
+) {
+    Button(
+        modifier = modifier,
+        onClick = onClick,
+        colors = ButtonDefaults.buttonColors(backgroundColor = LogoYellow)
+    ) {
+        icon?.let {
+            Image(imageVector = icon, contentDescription = null)
+            Spacer(modifier = Modifier.width(8.dp))
+        }
+        Text(text = stringResource(id = title))
     }
 }
 
 private fun LazyListScope.checkBalanceButton() {
     item {
-        Button(
+        YellowButton(
             modifier = Modifier.horizontal(),
-            onClick = { },
-            colors = ButtonDefaults.buttonColors(backgroundColor = LogoYellow)
-        ) {
-            Icon(imageVector = Icons.Outlined.AccountBalance, contentDescription = null)
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(text = stringResource(id = R.string.check_balance))
-        }
+            title = R.string.check_balance,
+            icon = Icons.Outlined.AccountBalance
+        )
     }
 }
 
@@ -91,10 +162,13 @@ private fun Modifier.horizontal() = this
     .padding(horizontal = 16.dp)
 
 
+@OptIn(ExperimentalFoundationApi::class)
 private fun LazyListScope.slidingNote(modifier: Modifier = Modifier, @StringRes res: Int) {
     item {
         Text(
-            modifier = modifier.padding(4.dp),
+            modifier = modifier
+                .padding(4.dp)
+                .basicMarquee(),
             text = stringResource(id = res),
             maxLines = 1,
             color = Blue
@@ -194,6 +268,36 @@ private fun LazyGridScope.featureCard(
             }
         }
     }
+}
 
+@Composable
+private fun OfferCard(
+    modifier: Modifier = Modifier,
+    title: String,
+    description: String,
+) {
+    Card(modifier.horizontal()) {
+        Row(
+            modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+        ) {
+            Column(
+                Modifier.weight(4f)
+            ) {
+                Text(text = title, color = Blue, fontWeight = FontWeight.SemiBold)
+                Text(text = description, color = Blue)
+                Spacer(modifier = Modifier.height(8.dp))
+                YellowButton(
+                    title = R.string.more_info
+                )
+            }
+            Column(
+                Modifier.weight(1f)
+            ) {
+
+            }
+        }
+    }
 }
 
