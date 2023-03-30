@@ -112,7 +112,6 @@ private fun LazyListScope.featureGrid(
     onTigoMobileShopClick: () -> Unit = {},
     onInternationalRemittanceClick: () -> Unit = {},
     onFinanceServiceClick: () -> Unit = {}
-
 ) {
     item {
         LazyVerticalGrid(
@@ -122,7 +121,7 @@ private fun LazyListScope.featureGrid(
             userScrollEnabled = false,
             modifier = modifier
                 .horizontal()
-                .height(500.dp)
+                .height(400.dp)
         ) {
             featureCard(
                 icon = R.drawable.send_money,
