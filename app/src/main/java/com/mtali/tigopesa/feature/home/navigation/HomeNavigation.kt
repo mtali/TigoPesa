@@ -22,7 +22,9 @@ fun NavGraphBuilder.homeGraph(
     onCashOutClick: () -> Unit,
     onTigoMobileShopClick: () -> Unit,
     onInternationalRemittanceClick: () -> Unit,
-    onFinanceServiceClick: () -> Unit
+    onFinanceServiceClick: () -> Unit,
+    onFavoritesClick: () -> Unit,
+    onNotificationsClick: () -> Unit,
 ) {
     navigation(
         route = homeGraphRoutePattern,
@@ -36,8 +38,11 @@ fun NavGraphBuilder.homeGraph(
                 onCashOutClick = onCashOutClick,
                 onTigoMobileShopClick = onTigoMobileShopClick,
                 onInternationalRemittanceClick = onInternationalRemittanceClick,
-                onFinanceServiceClick = onFinanceServiceClick
-            )
+                onFinanceServiceClick = onFinanceServiceClick,
+                onFavoritesClick = onFavoritesClick,
+                onNotificationsClick = onNotificationsClick,
+
+                )
         }
         nestedGraphs()
     }

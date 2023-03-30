@@ -67,7 +67,9 @@ fun HomeRoute(
     onCashOutClick: () -> Unit,
     onTigoMobileShopClick: () -> Unit,
     onInternationalRemittanceClick: () -> Unit,
-    onFinanceServiceClick: () -> Unit
+    onFinanceServiceClick: () -> Unit,
+    onFavoritesClick: () -> Unit,
+    onNotificationsClick: () -> Unit
 ) {
     HomeScreen(
         onSendMoneyClick = onSendMoneyClick,
@@ -76,7 +78,9 @@ fun HomeRoute(
         onCashOutClick = onCashOutClick,
         onTigoMobileShopClick = onTigoMobileShopClick,
         onInternationalRemittanceClick = onInternationalRemittanceClick,
-        onFinanceServiceClick = onFinanceServiceClick
+        onFinanceServiceClick = onFinanceServiceClick,
+        onFavoritesClick = onFavoritesClick,
+        onNotificationsClick = onNotificationsClick
     )
 }
 
@@ -89,10 +93,17 @@ private fun HomeScreen(
     onGovernmentPaymentsClick: () -> Unit = {},
     onTigoMobileShopClick: () -> Unit = {},
     onInternationalRemittanceClick: () -> Unit = {},
-    onFinanceServiceClick: () -> Unit = {}
+    onFinanceServiceClick: () -> Unit = {},
+    onFavoritesClick: () -> Unit = {},
+    onNotificationsClick: () -> Unit = {}
 ) {
     Scaffold(
-        topBar = { TigoToolbar() }
+        topBar = {
+            TigoToolbar(
+                onFavouritesClick = onFavoritesClick,
+                onNotificationsClick = onNotificationsClick
+            )
+        }
     ) { padding ->
         LazyColumn(
             Modifier

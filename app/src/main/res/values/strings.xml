@@ -28,6 +28,8 @@
     <string name="send_money_other_countries">Send Money (Other Countries)</string>
     <string name="home">Home</string>
     <string name="self_care">Self Care</string>
+    <string name="my_favourites">My Favourites</string>
+    <string name="notifications">Notifications</string>
 
     <!--Promos-->
     <string name="promo_mastercard_title">Tigo Pesa Mastercard</string>

@@ -19,7 +19,11 @@ import com.mtali.tigopesa.core.ui.theme.LogoYellow
 
 
 @Composable
-fun TigoToolbar(showActionIcons: Boolean = true) {
+fun TigoToolbar(
+    showActionIcons: Boolean = true,
+    onFavouritesClick: () -> Unit = {},
+    onNotificationsClick: () -> Unit = {}
+) {
     TopAppBar(backgroundColor = Blue) {
         val painter = painterResource(id = R.drawable.logo)
         Image(painter = painter, contentDescription = null)
@@ -27,11 +31,11 @@ fun TigoToolbar(showActionIcons: Boolean = true) {
         Spacer(modifier = Modifier.weight(1f))
 
         if (showActionIcons) {
-            ToolbarIcon(res = R.drawable.ic_star, onClick = {})
+            ToolbarIcon(res = R.drawable.ic_star, onClick = onFavouritesClick)
 
             Spacer(modifier = Modifier.width(10.dp))
 
-            ToolbarIcon(res = R.drawable.ic_notification, onClick = {})
+            ToolbarIcon(res = R.drawable.ic_notification, onClick = onNotificationsClick)
         }
     }
 }
