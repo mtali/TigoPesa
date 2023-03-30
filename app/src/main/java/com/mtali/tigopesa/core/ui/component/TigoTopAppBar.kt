@@ -10,7 +10,6 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import com.mtali.tigopesa.R
 import com.mtali.tigopesa.core.ui.theme.Blue
 
 
@@ -23,7 +22,7 @@ fun TigoTopAppBar(
 ) {
     TopAppBar(
         title = {
-            Text(text = stringResource(R.string.send_money), color = Color.White)
+            Text(text = stringResource(title), color = Color.White)
         },
         backgroundColor = Blue,
         navigationIcon = {

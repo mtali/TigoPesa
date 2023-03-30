@@ -16,7 +16,8 @@ fun NavController.navigateToHome(navOptions: NavOptions? = null) {
 
 fun NavGraphBuilder.homeGraph(
     nestedGraphs: NavGraphBuilder.() -> Unit,
-    onSendMoneyClick: () -> Unit
+    onSendMoneyClick: () -> Unit,
+    onBillPayClick: () -> Unit
 ) {
     navigation(
         route = homeGraphRoutePattern,
@@ -24,7 +25,8 @@ fun NavGraphBuilder.homeGraph(
     ) {
         composable(route = homeRoute) {
             HomeRoute(
-                onSendMoneyClick = onSendMoneyClick
+                onSendMoneyClick = onSendMoneyClick,
+                onBillPayClick = onBillPayClick
             )
         }
         nestedGraphs()

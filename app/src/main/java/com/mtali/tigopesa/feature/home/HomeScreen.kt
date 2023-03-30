@@ -61,10 +61,12 @@ import kotlinx.coroutines.isActive
 @Composable
 fun HomeRoute(
     viewModel: HomeViewModel = hiltViewModel(),
-    onSendMoneyClick: () -> Unit
+    onSendMoneyClick: () -> Unit,
+    onBillPayClick: () -> Unit
 ) {
     HomeScreen(
-        onSendMoneyClick = onSendMoneyClick
+        onSendMoneyClick = onSendMoneyClick,
+        onBillPayClick = onBillPayClick
     )
 }
 
