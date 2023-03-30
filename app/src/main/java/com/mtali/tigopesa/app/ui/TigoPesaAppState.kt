@@ -2,7 +2,7 @@ package com.mtali.tigopesa.app.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.remember
 import androidx.navigation.NavDestination
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
@@ -14,20 +14,19 @@ import com.mtali.tigopesa.feature.home.navigation.homeRoute
 import com.mtali.tigopesa.feature.home.navigation.navigateToHome
 import com.mtali.tigopesa.feature.self_care.navigation.navigateToSelfCare
 import com.mtali.tigopesa.feature.self_care.navigation.selfCareRoute
-import kotlinx.coroutines.CoroutineScope
 
 @Composable
-fun rememberTigoPesaAppState(): TigoPesaAppState {
-    return TigoPesaAppState(
-        navController = rememberNavController(),
-        coroutineScope = rememberCoroutineScope()
-    )
+fun rememberTigoPesaAppState(
+    navController: NavHostController = rememberNavController()
+): TigoPesaAppState {
+    return remember(navController) {
+        TigoPesaAppState(navController = navController)
+    }
 }
 
 @Stable
 class TigoPesaAppState(
     val navController: NavHostController,
-    val coroutineScope: CoroutineScope
 ) {
 
     val currentDestination: NavDestination?
@@ -58,5 +57,4 @@ class TigoPesaAppState(
             }
         }
     }
-
 }
