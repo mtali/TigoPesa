@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import com.mtali.tigopesa.feature.banking.navigation.bankingScreen
+import com.mtali.tigopesa.feature.banking.navigation.navigateToBanking
 import com.mtali.tigopesa.feature.bill_pay.navigation.billPayScreen
 import com.mtali.tigopesa.feature.bill_pay.navigation.navigateToBillPay
 import com.mtali.tigopesa.feature.home.navigation.homeGraph
@@ -27,10 +29,13 @@ fun TigoPesaNavHost(
         homeGraph(
             onSendMoneyClick = { navController.navigateToSendMoney() },
             onBillPayClick = { navController.navigateToBillPay() },
+            onTransferToBankClick = { navController.navigateToBanking() },
             nestedGraphs = {
                 billPayScreen(onBackClick = onBackClick)
 
                 sendMoneyScreen(onBackClick = onBackClick)
+
+                bankingScreen(onBackClick = onBackClick)
             }
         )
 

@@ -62,11 +62,13 @@ import kotlinx.coroutines.isActive
 fun HomeRoute(
     viewModel: HomeViewModel = hiltViewModel(),
     onSendMoneyClick: () -> Unit,
-    onBillPayClick: () -> Unit
+    onBillPayClick: () -> Unit,
+    onTransferToBankClick: () -> Unit
 ) {
     HomeScreen(
         onSendMoneyClick = onSendMoneyClick,
-        onBillPayClick = onBillPayClick
+        onBillPayClick = onBillPayClick,
+        onTransferToBankClick = onTransferToBankClick
     )
 }
 
