@@ -12,6 +12,8 @@ import com.mtali.tigopesa.feature.cash_out.navigation.cashOutScreen
 import com.mtali.tigopesa.feature.cash_out.navigation.navigateToCashOut
 import com.mtali.tigopesa.feature.home.navigation.homeGraph
 import com.mtali.tigopesa.feature.home.navigation.homeGraphRoutePattern
+import com.mtali.tigopesa.feature.mobile_shop.navigation.mobileShopScreen
+import com.mtali.tigopesa.feature.mobile_shop.navigation.navigateToMobileShop
 import com.mtali.tigopesa.feature.self_care.navigation.selfCareGraph
 import com.mtali.tigopesa.feature.send_money.navigation.navigateToSendMoney
 import com.mtali.tigopesa.feature.send_money.navigation.sendMoneyScreen
@@ -33,6 +35,7 @@ fun TigoPesaNavHost(
             onBillPayClick = { navController.navigateToBillPay() },
             onTransferToBankClick = { navController.navigateToBanking() },
             onCashOutClick = { navController.navigateToCashOut() },
+            onTigoMobileShopClick = { navController.navigateToMobileShop() },
             nestedGraphs = {
                 billPayScreen(onBackClick = onBackClick)
 
@@ -41,6 +44,8 @@ fun TigoPesaNavHost(
                 bankingScreen(onBackClick = onBackClick)
 
                 cashOutScreen(onBackClick = onBackClick)
+
+                mobileShopScreen(onBackClick = onBackClick)
             }
         )
 
