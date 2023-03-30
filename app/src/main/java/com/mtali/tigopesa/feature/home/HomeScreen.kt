@@ -65,14 +65,16 @@ fun HomeRoute(
     onBillPayClick: () -> Unit,
     onTransferToBankClick: () -> Unit,
     onCashOutClick: () -> Unit,
-    onTigoMobileShopClick: () -> Unit
+    onTigoMobileShopClick: () -> Unit,
+    onInternationalRemittanceClick: () -> Unit
 ) {
     HomeScreen(
         onSendMoneyClick = onSendMoneyClick,
         onBillPayClick = onBillPayClick,
         onTransferToBankClick = onTransferToBankClick,
         onCashOutClick = onCashOutClick,
-        onTigoMobileShopClick = onTigoMobileShopClick
+        onTigoMobileShopClick = onTigoMobileShopClick,
+        onInternationalRemittanceClick = onInternationalRemittanceClick
     )
 }
 
