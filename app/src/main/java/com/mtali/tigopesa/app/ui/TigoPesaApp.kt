@@ -58,7 +58,8 @@ fun TigoPesaBottomBar(
 
 }
 
-private fun NavDestination?.isTopLevelDestinationInHierarchy(destination: TopLevelDestination) =
-    this?.hierarchy?.any {
+private fun NavDestination?.isTopLevelDestinationInHierarchy(destination: TopLevelDestination): Boolean {
+    return this?.hierarchy?.any {
         it.route?.contains(destination.name, true) ?: false
     } ?: false
+}
