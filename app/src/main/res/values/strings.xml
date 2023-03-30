@@ -25,4 +25,15 @@
     <string name="international_remittance">International Remittance</string>
     <string name="empty"> </string>
     <string name="more_info">More Info</string>
+
+    <!--Promos-->
+    <string name="promo_mastercard_title">Tigo Pesa Mastercard</string>
+    <string name="promo_mastercard_description">Digital payments for products and services made easy with Tigo Pesa Mastercard.</string>
+    <string name="promo_levy_title">Levy has been reduced</string>
+    <string name="promo_levy_description">Enjoy doing Tigo Pesa transactions at a reduced levy</string>
+    <string name="promo_pay_tip_title">PayTip</string>
+    <string name="promo_pay_tip_description">NEW!!DIGITAL TIP Now customers can offer tip to waiter /waitress when paying for products and services</string>
+    <string name="promo_bustisha_title">Tigo Pesa Bustisha</string>
+    <string name="promo_bustisha_description">NEW!!Complete your Tigo Pesa transactions using Bustisha loan service</string>
+
 </resources>

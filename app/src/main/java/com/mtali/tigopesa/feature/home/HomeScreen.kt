@@ -35,12 +35,17 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AccountBalance
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mtali.tigopesa.R
@@ -49,18 +54,17 @@ import com.mtali.tigopesa.core.ui.component.height
 import com.mtali.tigopesa.core.ui.theme.Blue
 import com.mtali.tigopesa.core.ui.theme.BrightestGray
 import com.mtali.tigopesa.core.ui.theme.LogoYellow
+import com.mtali.tigopesa.feature.home.HomeViewModel.Companion.Banners
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 
 @Composable
 fun HomeRoute(viewModel: HomeViewModel = hiltViewModel()) {
-    val offerIndex = viewModel.currentOfferIndex
-    HomeScreen(
-        offerIndex = offerIndex
-    )
+    HomeScreen()
 }
 
 @Composable
 private fun HomeScreen(
-    offerIndex: Int
 ) {
     Scaffold(
         topBar = { TigoToolbar() }
@@ -83,24 +87,34 @@ private fun HomeScreen(
 
             featureGrid()
 
-            offers(index = offerIndex)
+            banners()
         }
     }
 }
 
+
 @OptIn(ExperimentalFoundationApi::class)
-fun LazyListScope.offers(count: Int = 3, index: Int = 0) {
+fun LazyListScope.banners() {
+    val count = Banners.size
     item {
         val pagerState = rememberPagerState()
+        var index: Int by remember { mutableStateOf(0) }
 
-        LaunchedEffect(key1 = index) { pagerState.animateScrollToPage(index) }
+        LaunchedEffect(Unit) {
+            while (isActive) {
+                delay(3000)
+                pagerState.animateScrollToPage(index)
+                index = (index + 1) % count
+            }
+        }
 
         Box {
             HorizontalPager(pageCount = count, state = pagerState) { page ->
                 // Our page content
-                OfferCard(
-                    title = "Tigo Pesa Mastercard",
-                    description = "Get a Tigo Pesa Mastercard and enjoy the convenience of a debit card",
+                BannerCard(
+                    title = stringResource(id = Banners[page].title),
+                    description = stringResource(id = Banners[page].description),
+                    image = Banners[page].image
                 )
             }
 
@@ -112,7 +126,7 @@ fun LazyListScope.offers(count: Int = 3, index: Int = 0) {
                 horizontalArrangement = Arrangement.Center
             ) {
                 repeat(count) { page ->
-                    val color = if (pagerState.currentPage == page) Blue else BrightestGray
+                    val color = if (pagerState.currentPage == page) LogoYellow else BrightestGray
                     Spacer(
                         modifier = Modifier
                             .padding(horizontal = 3.dp)
@@ -271,22 +285,29 @@ private fun LazyGridScope.featureCard(
 }
 
 @Composable
-private fun OfferCard(
+private fun BannerCard(
     modifier: Modifier = Modifier,
     title: String,
     description: String,
+    image: Int,
 ) {
     Card(modifier.horizontal()) {
         Row(
             modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Column(
                 Modifier.weight(4f)
             ) {
                 Text(text = title, color = Blue, fontWeight = FontWeight.SemiBold)
-                Text(text = description, color = Blue)
+                Text(
+                    text = description,
+                    color = Blue,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis
+                )
                 Spacer(modifier = Modifier.height(8.dp))
                 YellowButton(
                     title = R.string.more_info
@@ -295,7 +316,11 @@ private fun OfferCard(
             Column(
                 Modifier.weight(1f)
             ) {
-
+                Image(
+                    painter = painterResource(id = image),
+                    contentDescription = null,
+                    modifier = Modifier.size(80.dp)
+                )
             }
         }
     }
