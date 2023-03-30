@@ -90,6 +90,9 @@ dependencies {
     // KSP
     implementation "com.google.devtools.ksp:symbol-processing-api:$ksp_version"
 
+    // Code
+    implementation "androidx.tracing:tracing:1.2.0-beta02"
+
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

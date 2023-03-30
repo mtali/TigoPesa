@@ -3,6 +3,7 @@ package com.mtali.tigopesa.core.ui.component
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Icon
@@ -18,18 +19,20 @@ import com.mtali.tigopesa.core.ui.theme.LogoYellow
 
 
 @Composable
-fun TigoToolbar() {
+fun TigoToolbar(showActionIcons: Boolean = true) {
     TopAppBar(backgroundColor = Blue) {
         val painter = painterResource(id = R.drawable.logo)
         Image(painter = painter, contentDescription = null)
 
         Spacer(modifier = Modifier.weight(1f))
 
-        ToolbarIcon(res = R.drawable.ic_star, onClick = {})
+        if (showActionIcons) {
+            ToolbarIcon(res = R.drawable.ic_star, onClick = {})
 
-        Spacer(modifier = Modifier.width(10.dp))
+            Spacer(modifier = Modifier.width(10.dp))
 
-        ToolbarIcon(res = R.drawable.ic_notification, onClick = {})
+            ToolbarIcon(res = R.drawable.ic_notification, onClick = {})
+        }
     }
 }
 
@@ -40,7 +43,8 @@ private fun ToolbarIcon(modifier: Modifier = Modifier, res: Int, onClick: () -> 
         contentDescription = null,
         tint = LogoYellow,
         modifier = modifier
-            .size(25.dp)
+            .padding(end = 4.dp)
+            .size(30.dp)
             .clickable {
                 onClick()
             }

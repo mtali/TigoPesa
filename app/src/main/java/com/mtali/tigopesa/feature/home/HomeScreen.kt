@@ -110,7 +110,6 @@ fun LazyListScope.banners() {
 
         Box {
             HorizontalPager(pageCount = count, state = pagerState) { page ->
-                // Our page content
                 BannerCard(
                     title = stringResource(id = Banners[page].title),
                     description = stringResource(id = Banners[page].description),
