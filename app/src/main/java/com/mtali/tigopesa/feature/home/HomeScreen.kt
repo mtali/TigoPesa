@@ -63,12 +63,14 @@ fun HomeRoute(
     viewModel: HomeViewModel = hiltViewModel(),
     onSendMoneyClick: () -> Unit,
     onBillPayClick: () -> Unit,
-    onTransferToBankClick: () -> Unit
+    onTransferToBankClick: () -> Unit,
+    onCashOutClick: () -> Unit
 ) {
     HomeScreen(
         onSendMoneyClick = onSendMoneyClick,
         onBillPayClick = onBillPayClick,
-        onTransferToBankClick = onTransferToBankClick
+        onTransferToBankClick = onTransferToBankClick,
+        onCashOutClick = onCashOutClick,
     )
 }
 
