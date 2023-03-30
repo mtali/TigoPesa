@@ -40,7 +40,7 @@ fun RowScope.TigoPesaNavigationBarItem(
         onClick = onClick,
         label = {
             Text(
-                text = stringResource(id = label).uppercase(),
+                text = stringResource(id = label),
                 fontSize = 12.sp,
                 color = color
             )
