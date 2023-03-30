@@ -7,21 +7,27 @@ import androidx.navigation.compose.NavHost
 import com.mtali.tigopesa.feature.home.navigation.homeGraph
 import com.mtali.tigopesa.feature.home.navigation.homeGraphRoutePattern
 import com.mtali.tigopesa.feature.self_care.navigation.selfCareGraph
+import com.mtali.tigopesa.feature.send_money.navigation.navigateToSendMoney
+import com.mtali.tigopesa.feature.send_money.navigation.sendMoneyScreen
 
 @Composable
 fun TigoPesaNavHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
-    startDestination: String = homeGraphRoutePattern
+    startDestination: String = homeGraphRoutePattern,
+    onBackClick: () -> Unit
 ) {
     NavHost(
         navController = navController,
         startDestination = startDestination,
         modifier = modifier
     ) {
-        homeGraph {
-
-        }
+        homeGraph(
+            onSendMoneyClick = { navController.navigateToSendMoney() },
+            nestedGraphs = {
+                sendMoneyScreen(onBackClick = onBackClick)
+            }
+        )
 
         selfCareGraph {
 

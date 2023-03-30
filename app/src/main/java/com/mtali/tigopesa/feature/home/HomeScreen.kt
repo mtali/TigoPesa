@@ -59,12 +59,25 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 
 @Composable
-fun HomeRoute(viewModel: HomeViewModel = hiltViewModel()) {
-    HomeScreen()
+fun HomeRoute(
+    viewModel: HomeViewModel = hiltViewModel(),
+    onSendMoneyClick: () -> Unit
+) {
+    HomeScreen(
+        onSendMoneyClick = onSendMoneyClick
+    )
 }
 
 @Composable
 private fun HomeScreen(
+    onSendMoneyClick: () -> Unit = {},
+    onBillPayClick: () -> Unit = {},
+    onTransferToBankClick: () -> Unit = {},
+    onCashOutClick: () -> Unit = {},
+    onGovernmentPaymentsClick: () -> Unit = {},
+    onTigoMobileShopClick: () -> Unit = {},
+    onInternationalRemittanceClick: () -> Unit = {},
+    onFinanceServiceClick: () -> Unit = {}
 ) {
     Scaffold(
         topBar = { TigoToolbar() }
@@ -85,7 +98,16 @@ private fun HomeScreen(
 
             height(20.dp)
 
-            featureGrid()
+            featureGrid(
+                onSendMoneyClick = onSendMoneyClick,
+                onBillPayClick = onBillPayClick,
+                onTransferToBankClick = onTransferToBankClick,
+                onCashOutClick = onCashOutClick,
+                onGovernmentPaymentsClick = onGovernmentPaymentsClick,
+                onTigoMobileShopClick = onTigoMobileShopClick,
+                onInternationalRemittanceClick = onInternationalRemittanceClick,
+                onFinanceServiceClick = onFinanceServiceClick
+            )
 
             banners()
         }

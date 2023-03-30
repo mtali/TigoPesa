@@ -31,7 +31,10 @@ fun TigoPesaApp(appState: TigoPesaAppState = rememberTigoPesaAppState()) {
                 .padding(padding)
                 .fillMaxSize()
         ) {
-            TigoPesaNavHost(appState.navController)
+            TigoPesaNavHost(
+                navController = appState.navController,
+                onBackClick = appState::onBackClick
+            )
         }
     }
 }

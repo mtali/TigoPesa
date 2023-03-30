@@ -59,4 +59,8 @@ class TigoPesaAppState(
             }
         }
     }
+
+    fun onBackClick() {
+        navController.popBackStack()
+    }
 }
