@@ -40,6 +40,10 @@
     <string name="send_as_voucher">Send as Voucher</string>
     <string name="choose">Choose</string>
     <string name="send_money_description">Send Money to any Network. Enter mobile number or choose from your contacts</string>
+    <string name="scan_qr_code_and_pay">Scan QR Code And Pay</string>
+    <string name="select_category">Select Category</string>
+    <string name="search_by_biller_code_or_name">Search by Biller code or name</string>
+
 
     <!--Promos-->
     <string name="promo_mastercard_title">Tigo Pesa Mastercard</string>

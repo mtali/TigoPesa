@@ -1,5 +1,6 @@
 package com.mtali.tigopesa.app.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -13,6 +14,7 @@ import com.mtali.tigopesa.app.navigation.TigoPesaNavHost
 import com.mtali.tigopesa.app.navigation.TopLevelDestination
 import com.mtali.tigopesa.core.ui.component.TigoPesaNavigationBarItem
 import com.mtali.tigopesa.core.ui.theme.Blue
+import com.mtali.tigopesa.core.ui.theme.BrightestGray
 
 
 @Composable
@@ -29,6 +31,7 @@ fun TigoPesaApp(appState: TigoPesaAppState = rememberTigoPesaAppState()) {
         Column(
             Modifier
                 .padding(padding)
+                .background(BrightestGray)
                 .fillMaxSize()
         ) {
             TigoPesaNavHost(
