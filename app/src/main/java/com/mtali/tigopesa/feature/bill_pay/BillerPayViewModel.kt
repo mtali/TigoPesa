@@ -1,11 +1,30 @@
 package com.mtali.tigopesa.feature.bill_pay
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class BillerPayViewModel @Inject constructor() : ViewModel() {
+
+    var selectedBiller by mutableStateOf<Biller?>(null)
+        private set
+
+    fun onSelectBiller(biller: Biller) {
+        selectedBiller = biller
+    }
+
+    fun onBackClick(handler: () -> Unit) {
+        if (selectedBiller == null) {
+            handler()
+        } else {
+            selectedBiller = null
+        }
+    }
+
     companion object {
         val billers = listOf(
             Biller("LUKU", "001002"),

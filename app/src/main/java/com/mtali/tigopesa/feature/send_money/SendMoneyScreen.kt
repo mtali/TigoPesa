@@ -71,7 +71,7 @@ private fun SendMoneyScreen(
                     tigoTextField(
                         modifier = Modifier.horizontal(),
                         title = R.string.amount,
-                        placeholder = R.string.ph_enter_amount,
+                        placeholder = R.string.ph_enter_amount_to_send,
                         value = "",
                         onChangeValue = {}
                     )
