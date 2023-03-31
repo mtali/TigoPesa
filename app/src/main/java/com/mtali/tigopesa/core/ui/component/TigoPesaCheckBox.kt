@@ -16,17 +16,18 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun TigoPesaCheckBox(
+    modifier: Modifier = Modifier,
     @StringRes text: Int,
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.clickable { onCheckedChange(!checked) }
+        modifier = modifier.clickable { onCheckedChange(!checked) }
     ) {
         Checkbox(
             checked = checked,
-            onCheckedChange = onCheckedChange,
+            onCheckedChange = onCheckedChange
         )
         Text(
             text = stringResource(id = text),
@@ -37,12 +38,14 @@ fun TigoPesaCheckBox(
 }
 
 fun LazyListScope.tigoPesaCheckBox(
+    modifier: Modifier = Modifier,
     @StringRes text: Int,
     checked: Boolean,
-    onCheckedChange: (Boolean) -> Unit
+    onCheckedChange: (Boolean) -> Unit,
 ) {
     item {
         TigoPesaCheckBox(
+            modifier = modifier,
             text = text,
             checked = checked,
             onCheckedChange = onCheckedChange

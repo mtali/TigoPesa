@@ -12,8 +12,12 @@ import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.mtali.tigopesa.core.ui.theme.LightBlue
+
+
+val TIGO_TEXT_FIELD_HEIGHT = 50.dp
 
 @Composable
 fun TigoTextField(
@@ -23,6 +27,7 @@ fun TigoTextField(
     onChangeValue: (String) -> Unit = {},
     enabled: Boolean = true,
     placeholder: Int? = null,
+    height: Dp? = TIGO_TEXT_FIELD_HEIGHT
 ) {
     Column(modifier.fillMaxWidth()) {
         title?.let {
@@ -30,6 +35,7 @@ fun TigoTextField(
             Spacer(modifier = Modifier.height(8.dp))
         }
 
+        val fieldModifier = if (height == null) Modifier else Modifier.height(height = height)
 
         OutlinedTextField(
             value = value,
@@ -42,7 +48,7 @@ fun TigoTextField(
                 focusedBorderColor = LightBlue,
                 backgroundColor = LightBlue.copy(0.1f),
             ),
-            modifier = Modifier.fillMaxWidth(),
+            modifier = fieldModifier.fillMaxWidth(),
             placeholder = {
                 placeholder?.let {
                     Text(text = stringResource(id = placeholder))
@@ -59,6 +65,7 @@ fun LazyListScope.tigoTextField(
     onChangeValue: (String) -> Unit = {},
     enabled: Boolean = true,
     placeholder: Int? = null,
+    height: Dp? = TIGO_TEXT_FIELD_HEIGHT
 ) {
     item {
         TigoTextField(
@@ -68,6 +75,7 @@ fun LazyListScope.tigoTextField(
             onChangeValue = onChangeValue,
             enabled = enabled,
             placeholder = placeholder,
+            height = height
         )
     }
 }
