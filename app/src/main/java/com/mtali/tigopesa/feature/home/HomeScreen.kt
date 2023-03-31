@@ -1,12 +1,10 @@
 package com.mtali.tigopesa.feature.home
 
-import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,7 +19,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyGridScope
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -51,6 +48,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.mtali.tigopesa.R
 import com.mtali.tigopesa.core.ui.component.TigoToolbar
 import com.mtali.tigopesa.core.ui.component.height
+import com.mtali.tigopesa.core.ui.component.tigoFeatureCard
 import com.mtali.tigopesa.core.ui.theme.Blue
 import com.mtali.tigopesa.core.ui.theme.BrightestGray
 import com.mtali.tigopesa.core.ui.theme.LogoYellow
@@ -255,42 +253,42 @@ private fun LazyListScope.featureGrid(
                 .horizontal()
                 .height(400.dp)
         ) {
-            featureCard(
+            tigoFeatureCard(
                 icon = R.drawable.send_money,
                 title = R.string.send_money,
                 onClick = onSendMoneyClick
             )
-            featureCard(
+            tigoFeatureCard(
                 icon = R.drawable.bill_pay,
                 title = R.string.bill_pay,
                 onClick = onBillPayClick
             )
-            featureCard(
+            tigoFeatureCard(
                 icon = R.drawable.transfer_to_bank,
                 title = R.string.banking,
                 onClick = onTransferToBankClick
             )
-            featureCard(
+            tigoFeatureCard(
                 icon = R.drawable.cash_out,
                 title = R.string.cash_out,
                 onClick = onCashOutClick
             )
-            featureCard(
+            tigoFeatureCard(
                 icon = R.drawable.government_payments,
                 title = R.string.government_payments,
                 onClick = onGovernmentPaymentsClick
             )
-            featureCard(
+            tigoFeatureCard(
                 icon = R.drawable.tigo_mobile_shop,
                 title = R.string.tigo_mobile_shop,
                 onClick = onTigoMobileShopClick
             )
-            featureCard(
+            tigoFeatureCard(
                 icon = R.drawable.ic_imt,
                 title = R.string.international_remittance,
                 onClick = onInternationalRemittanceClick
             )
-            featureCard(
+            tigoFeatureCard(
                 icon = R.drawable.finance_service,
                 title = R.string.finance_service,
                 onClick = onFinanceServiceClick
@@ -299,34 +297,6 @@ private fun LazyListScope.featureGrid(
     }
 }
 
-
-private fun LazyGridScope.featureCard(
-    modifier: Modifier = Modifier,
-    @DrawableRes icon: Int,
-    @StringRes title: Int,
-    onClick: () -> Unit = {}
-) {
-    item {
-        Card(modifier = modifier
-            .fillMaxWidth()
-            .height(80.dp)
-            .clickable { onClick() }
-        ) {
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.padding(vertical = 8.dp)
-            ) {
-                Image(
-                    painter = painterResource(id = icon),
-                    contentDescription = null,
-                    modifier = Modifier.size(40.dp)
-                )
-                Text(text = stringResource(id = title))
-            }
-        }
-    }
-}
 
 @Composable
 private fun BannerCard(
