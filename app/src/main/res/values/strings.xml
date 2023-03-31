@@ -46,6 +46,8 @@
     <string name="you_will_pay_to">You will pay to: </string>
     <string name="reference_number">Reference Number</string>
     <string name="ph_enter_amount_to_pay">Enter amount to pay</string>
+    <string name="transfer_to_bank">Transfer to Bank</string>
+    <string name="bank_to_wallet">Bank to Wallet</string>
 
 
     <!--Promos-->

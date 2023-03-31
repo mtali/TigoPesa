@@ -20,6 +20,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 
+val featureHeight = 80.dp
+val featureVerticalSpacing = 16.dp
+
+
 @Composable
 fun TigoFeatureCard(
     modifier: Modifier = Modifier,
@@ -27,10 +31,12 @@ fun TigoFeatureCard(
     @StringRes title: Int?,
     onClick: () -> Unit = {}
 ) {
-    Card(modifier = modifier
-        .fillMaxWidth()
-        .height(80.dp)
-        .clickable { onClick() }
+    Card(
+        modifier = modifier
+            .fillMaxWidth()
+            .height(featureHeight)
+            .clickable { onClick() },
+        elevation = 4.dp
     ) {
         Column(
             verticalArrangement = Arrangement.Center,
@@ -42,10 +48,7 @@ fun TigoFeatureCard(
                 contentDescription = null,
                 modifier = Modifier.size(40.dp)
             )
-            title?.let {
-                Text(text = stringResource(id = title))
-            }
-
+            title?.let { Text(text = stringResource(id = title)) }
         }
     }
 }
