@@ -30,6 +30,16 @@
     <string name="self_care">Self Care</string>
     <string name="my_favourites">My Favourites</string>
     <string name="notifications">Notifications</string>
+    <string name="to_all_networks">To: (All Networks)</string>
+    <string name="ph_enter_phone_number">Enter phone number/contact</string>
+    <string name="amount">Amount</string>
+    <string name="ph_enter_amount">Enter amount to send</string>
+    <string name="transaction_description">Transaction description (optional)</string>
+    <string name="ph_enter_description">Enter description</string>
+    <string name="send_with_cash_out_fees">Send with Cash Out Fees</string>
+    <string name="send_as_voucher">Send as Voucher</string>
+    <string name="choose">Choose</string>
+    <string name="send_money_description">Send Money to any Network. Enter mobile number or choose from your contacts</string>
 
     <!--Promos-->
     <string name="promo_mastercard_title">Tigo Pesa Mastercard</string>
