@@ -48,6 +48,10 @@
     <string name="ph_enter_amount_to_pay">Enter amount to pay</string>
     <string name="transfer_to_bank">Transfer to Bank</string>
     <string name="bank_to_wallet">Bank to Wallet</string>
+    <string name="cash_out_notice">Visit your agent for withdrawals</string>
+    <string name="from">From</string>
+    <string name="ph_amount_to_cash_out">Enter amount to cash out</string>
+    <string name="ph_enter_agent_number">Enter a valid Agent Number</string>
 
 
     <!--Promos-->

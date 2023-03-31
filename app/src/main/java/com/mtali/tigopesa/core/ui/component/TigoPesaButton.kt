@@ -11,20 +11,26 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.mtali.tigopesa.core.ui.theme.Blue
+import com.mtali.tigopesa.core.utils.Icon
+
+enum class IconDirection {
+    START, END
+}
 
 @Composable
 fun TigoPesaButton(
     modifier: Modifier = Modifier,
     @StringRes title: Int,
     bgColor: Color = Blue,
-    icon: ImageVector? = null,
+    icon: Icon? = null,
     textColor: Color = Color.White,
     uppercase: Boolean = false,
-    onClick: () -> Unit = {}
+    onClick: () -> Unit = {},
+    iconDirection: IconDirection = IconDirection.START
 
 ) {
     Button(
@@ -32,13 +38,49 @@ fun TigoPesaButton(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(backgroundColor = bgColor)
     ) {
-        icon?.let {
-            Image(imageVector = icon, contentDescription = null)
-            Spacer(modifier = Modifier.width(8.dp))
-        }
+
         val modTitle =
             if (uppercase) stringResource(id = title).uppercase() else stringResource(id = title)
-        Text(text = modTitle, color = textColor)
+
+        when (iconDirection) {
+            IconDirection.START -> {
+                icon?.let {
+                    when (icon) {
+                        is Icon.DrawableResourceIcon -> {
+                            Image(
+                                painter = painterResource(id = icon.id),
+                                contentDescription = null
+                            )
+                        }
+
+                        is Icon.ImageVectorIcon -> {
+                            Image(imageVector = icon.imageVector, contentDescription = null)
+                        }
+                    }
+                    Spacer(modifier = Modifier.width(8.dp))
+                }
+                Text(text = modTitle, color = textColor)
+            }
+
+            IconDirection.END -> {
+                Text(text = modTitle, color = textColor)
+                icon?.let {
+                    Spacer(modifier = Modifier.width(8.dp))
+                    when (icon) {
+                        is Icon.DrawableResourceIcon -> {
+                            Image(
+                                painter = painterResource(id = icon.id),
+                                contentDescription = null
+                            )
+                        }
+
+                        is Icon.ImageVectorIcon -> {
+                            Image(imageVector = icon.imageVector, contentDescription = null)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -46,7 +88,7 @@ fun LazyListScope.tigoPesaButton(
     modifier: Modifier = Modifier,
     @StringRes title: Int,
     bgColor: Color = Blue,
-    icon: ImageVector? = null,
+    icon: Icon? = null,
     uppercase: Boolean = false,
     onClick: () -> Unit = {}
 ) {

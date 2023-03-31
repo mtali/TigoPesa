@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mtali.tigopesa.R
 import com.mtali.tigopesa.core.ui.Height
+import com.mtali.tigopesa.core.ui.component.IconDirection
 import com.mtali.tigopesa.core.ui.component.TigoPesaButton
 import com.mtali.tigopesa.core.ui.component.TigoTextField
 import com.mtali.tigopesa.core.ui.component.TigoTopAppBar
@@ -47,6 +48,7 @@ import com.mtali.tigopesa.core.ui.theme.Blue
 import com.mtali.tigopesa.core.ui.theme.BrightestGray
 import com.mtali.tigopesa.core.ui.theme.Green
 import com.mtali.tigopesa.core.ui.theme.LogoYellow
+import com.mtali.tigopesa.core.utils.Icon.DrawableResourceIcon
 import com.mtali.tigopesa.feature.bill_pay.BillerPayViewModel.Companion.billers
 
 
@@ -194,7 +196,9 @@ private fun LazyListScope.actionButtons() {
                         .fillMaxWidth()
                         .height(50.dp),
                     bgColor = Blue,
-                    uppercase = true
+                    uppercase = true,
+                    icon = DrawableResourceIcon(R.drawable.ic_qr_search_new),
+                    iconDirection = IconDirection.END
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 TigoPesaButton(
@@ -204,7 +208,8 @@ private fun LazyListScope.actionButtons() {
                         .height(50.dp),
                     onClick = { },
                     bgColor = Green,
-                    uppercase = true
+                    uppercase = true,
+                    icon = null,
                 )
             }
         }
