@@ -111,8 +111,6 @@ private fun BillerItem(
             Text(text = " ($code)", fontSize = 16.sp)
         }
 
-
-
         Divider(
             startIndent = 4.dp,
             color = BrightestGray
