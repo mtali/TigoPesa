@@ -27,7 +27,8 @@ fun TigoTextField(
     onChangeValue: (String) -> Unit = {},
     enabled: Boolean = true,
     placeholder: Int? = null,
-    height: Dp? = TIGO_TEXT_FIELD_HEIGHT
+    height: Dp? = TIGO_TEXT_FIELD_HEIGHT,
+    trailingIcon: @Composable (() -> Unit)? = null,
 ) {
     Column(modifier.fillMaxWidth()) {
         title?.let {
@@ -47,13 +48,16 @@ fun TigoTextField(
                 disabledTextColor = LightBlue,
                 focusedBorderColor = LightBlue,
                 backgroundColor = LightBlue.copy(0.1f),
+                disabledPlaceholderColor = LightBlue,
+                placeholderColor = LightBlue,
             ),
             modifier = fieldModifier.fillMaxWidth(),
             placeholder = {
                 placeholder?.let {
                     Text(text = stringResource(id = placeholder))
                 }
-            }
+            },
+            trailingIcon = trailingIcon
         )
     }
 }

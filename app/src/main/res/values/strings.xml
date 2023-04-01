@@ -59,7 +59,12 @@
     <string name="buy_bundle">Buy Bundle</string>
     <string name="lend_services">Lend Me Services</string>
     <string name="mobile_self_care">Mobile Self Care Services</string>
-
+    <string name="international_remit_notice">Send money to other countries. Choose the country and network below. Then enter number or choose from contacts</string>
+    <string name="country">Country</string>
+    <string name="select_country">Select country</string>
+    <string name="network">Network</string>
+    <string name="select_network">Select network</string>
+    <string name="to">To</string>
 
     <!--Promos-->
     <string name="promo_mastercard_title">Tigo Pesa Mastercard</string>
