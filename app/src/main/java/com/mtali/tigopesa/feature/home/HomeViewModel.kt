@@ -30,6 +30,10 @@ class HomeViewModel @Inject constructor() : ViewModel() {
         dialogUiState = HomeDialogUiState.CheckBalanceEnterPin
     }
 
+    fun onSubmitOtp() {
+        dialogUiState = HomeDialogUiState.ShowBalance(4_500_000f)
+    }
+
     companion object {
         val Banners = listOf(
             Banner(

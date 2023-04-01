@@ -26,6 +26,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
+import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -44,6 +45,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mtali.tigopesa.R
 import com.mtali.tigopesa.core.ui.Height
@@ -96,7 +98,8 @@ fun HomeRoute(
         dialogState = dialogState,
         onGovernmentPaymentsClick = viewModel::onGovernmentPayClick,
         onDialogCancel = viewModel::onDialogCancel,
-        onCheckBalanceClick = viewModel::onCheckBalanceClick
+        onCheckBalanceClick = viewModel::onCheckBalanceClick,
+        onSubmitOtp = viewModel::onSubmitOtp
     )
 }
 
@@ -114,6 +117,7 @@ private fun HomeScreen(
     onNotificationsClick: () -> Unit = {},
     onDialogCancel: () -> Unit = {},
     onCheckBalanceClick: () -> Unit = {},
+    onSubmitOtp: () -> Unit = {},
     dialogState: HomeDialogUiState
 ) {
     Scaffold(
@@ -155,21 +159,56 @@ private fun HomeScreen(
         }
 
         when (dialogState) {
-            ChoosePaymentMethod -> {
-                ChoosePaymentMethodDialog(onCancel = onDialogCancel)
-            }
+            is ChoosePaymentMethod -> ChoosePaymentMethodDialog(onCancel = onDialogCancel)
+            is CheckBalanceEnterPin -> CheckBalanceEnterPinDialog(
+                onCancel = onDialogCancel,
+                onNext = onSubmitOtp
+            )
 
-            CheckBalanceEnterPin -> CheckBalanceEnterPinDialog(onCancel = onDialogCancel)
-            is ShowBalance -> TODO()
+            is ShowBalance -> BalanceDialog(onCancel = onDialogCancel)
             None -> Unit
         }
     }
 }
 
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun CheckBalanceEnterPinDialog(onCancel: () -> Unit) {
+private fun BalanceDialog(onCancel: () -> Unit) {
+    TigoPesaDialog(
+        title = null,
+        onCancel = onCancel,
+        bgColor = LogoYellow,
+        dismissible = true
+    ) {
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.check_balance),
+                contentDescription = null,
+                modifier = Modifier.size(45.dp),
+                tint = Blue
+            )
+
+            Text(
+                text = stringResource(id = R.string.your_balance_is),
+                fontSize = 24.sp,
+                color = Blue
+            )
+
+            Height(size = 16.dp)
+
+            Text(text = "Tsh 4,500,000", fontSize = 30.sp, color = Blue)
+        }
+    }
+}
+
+
+@Composable
+private fun CheckBalanceEnterPinDialog(onCancel: () -> Unit, onNext: () -> Unit) {
     TigoPesaDialog(title = R.string.check_balance_free, onCancel = onCancel) {
         Column(
             modifier = Modifier.fillMaxWidth(),
@@ -198,7 +237,7 @@ fun CheckBalanceEnterPinDialog(onCancel: () -> Unit) {
                 TigoPesaButton(
                     modifier = Modifier.weight(1f),
                     title = R.string.confirm,
-                    onClick = {},
+                    onClick = onNext,
                     bgColor = Green,
                     uppercase = true
                 )

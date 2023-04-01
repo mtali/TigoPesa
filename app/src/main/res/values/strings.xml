@@ -67,6 +67,7 @@
     <string name="select_network">Select network</string>
     <string name="to">To</string>
     <string name="check_balance">Check Balance</string>
+    <string name="your_balance_is">Your balance is:</string>
 
     <!--Promos-->
     <string name="promo_mastercard_title">Tigo Pesa Mastercard</string>
