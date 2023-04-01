@@ -15,13 +15,17 @@ import com.mtali.tigopesa.feature.favourites.navigation.navigateToFavourites
 import com.mtali.tigopesa.feature.financial_services.navigation.financialServicesScreen
 import com.mtali.tigopesa.feature.financial_services.navigation.navigateToFinancialServices
 import com.mtali.tigopesa.feature.home.navigation.homeGraph
-import com.mtali.tigopesa.feature.home.navigation.homeGraphRoutePattern
+import com.mtali.tigopesa.feature.home.navigation.navigateToHome
 import com.mtali.tigopesa.feature.international.navigation.internationalScreen
 import com.mtali.tigopesa.feature.international.navigation.navigateToInternational
 import com.mtali.tigopesa.feature.mobile_shop.navigation.mobileShopScreen
 import com.mtali.tigopesa.feature.mobile_shop.navigation.navigateToMobileShop
 import com.mtali.tigopesa.feature.notifications.navigation.navigateToNotifications
 import com.mtali.tigopesa.feature.notifications.navigation.notificationsScreen
+import com.mtali.tigopesa.feature.oboarding_choose_language.navigation.onboardingRoute
+import com.mtali.tigopesa.feature.oboarding_choose_language.navigation.onboardingScreen
+import com.mtali.tigopesa.feature.register_device.navigation.navigateToRegisterDevice
+import com.mtali.tigopesa.feature.register_device.navigation.registerDeviceScreen
 import com.mtali.tigopesa.feature.self_care.navigation.selfCareGraph
 import com.mtali.tigopesa.feature.send_money.navigation.navigateToSendMoney
 import com.mtali.tigopesa.feature.send_money.navigation.sendMoneyScreen
@@ -30,7 +34,7 @@ import com.mtali.tigopesa.feature.send_money.navigation.sendMoneyScreen
 fun TigoPesaNavHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
-    startDestination: String = homeGraphRoutePattern,
+    startDestination: String = onboardingRoute,
     onBackClick: () -> Unit
 ) {
     NavHost(
@@ -72,5 +76,14 @@ fun TigoPesaNavHost(
         selfCareGraph {
 
         }
+
+        onboardingScreen(
+            onLanguageSelected = { navController.navigateToRegisterDevice() }
+        )
+
+        registerDeviceScreen(
+            onBackClick = onBackClick,
+            onDeviceRegistered = { navController.navigateToHome() }
+        )
     }
 }

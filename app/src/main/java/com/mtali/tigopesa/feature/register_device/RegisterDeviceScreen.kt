@@ -1,5 +1,6 @@
 package com.mtali.tigopesa.feature.register_device
 
+import androidx.activity.compose.BackHandler
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -30,6 +31,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.mtali.tigopesa.R
 import com.mtali.tigopesa.core.ui.component.GreenButton
 import com.mtali.tigopesa.core.ui.component.OtpView
@@ -39,13 +41,32 @@ import com.mtali.tigopesa.core.ui.theme.Blue
 import com.mtali.tigopesa.core.ui.theme.LightGray
 
 @Composable
-fun RegisterDeviceRoute() {
-    RegisterDeviceScreen()
+fun RegisterDeviceRoute(
+    viewModel: RegisterDeviceViewModel = hiltViewModel(),
+    onDeviceRegistered: () -> Unit,
+    onBackClick: () -> Unit
+) {
+    val showForm = viewModel.showForm
+
+    RegisterDeviceScreen(
+        onDeviceRegistered = onDeviceRegistered,
+        showForm = showForm,
+        onNumberConfirmed = viewModel::onNumberConfirmed,
+        onBackClick = {
+            viewModel.onBackClick(onBackClick)
+        }
+    )
 }
 
 
 @Composable
-private fun RegisterDeviceScreen() {
+private fun RegisterDeviceScreen(
+    showForm: Boolean,
+    onDeviceRegistered: () -> Unit,
+    onNumberConfirmed: () -> Unit,
+    onBackClick: () -> Unit
+
+) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -54,7 +75,7 @@ private fun RegisterDeviceScreen() {
                 },
                 backgroundColor = Blue,
                 navigationIcon = {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = onBackClick) {
                         Icon(
                             imageVector = Icons.Filled.ArrowBack,
                             contentDescription = "",
@@ -66,18 +87,23 @@ private fun RegisterDeviceScreen() {
         }
     ) { padding ->
 
-        var toggle by remember { mutableStateOf(true) }
 
         LazyColumn(
             Modifier
                 .padding(padding)
         ) {
 
-            if (toggle) {
+            if (showForm) {
                 height(16.dp)
-                confirmNumberForm(onClickNext = { toggle = !toggle })
+                confirmNumberForm(onClickNext = { onNumberConfirmed() })
             } else {
-                authCodeForm()
+                authCodeForm(onRegisterClick = onDeviceRegistered)
+                item {
+                    BackHandler(true) {
+                        onBackClick()
+                    }
+                }
+
             }
         }
     }
@@ -99,15 +125,22 @@ private fun Notice(modifier: Modifier = Modifier, @StringRes text: Int) {
     }
 }
 
-private fun LazyListScope.authCodeForm() {
+private fun LazyListScope.authCodeForm(onRegisterClick: () -> Unit) {
     item {
         Notice(text = R.string.auth_sms_notice)
         Column(Modifier.padding(horizontal = 16.dp)) {
             Spacer(modifier = Modifier.height(16.dp))
+
+            var code by remember { mutableStateOf("") }
+
+
             TigoTextField(
                 title = R.string.authentication_code,
-                value = "",
-                enabled = true
+                value = code,
+                enabled = true,
+                onValueChange = {
+                    code = it
+                }
             )
             Spacer(modifier = Modifier.height(16.dp))
             Text(text = stringResource(id = R.string.existing_tigo_pesa_pin))
@@ -121,7 +154,7 @@ private fun LazyListScope.authCodeForm() {
 
             GreenButton(
                 title = R.string.register,
-                onClick = {}
+                onClick = onRegisterClick
             )
 
 

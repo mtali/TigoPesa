@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,12 +32,14 @@ import com.mtali.tigopesa.core.ui.theme.BrightestGray
 
 
 @Composable
-fun OnboardChooseLanguageRoute() {
-    OnboardChooseLanguageScreen()
+fun OnboardChooseLanguageRoute(onLanguageSelected: () -> Unit) {
+    OnboardChooseLanguageScreen(onLanguageSelected = onLanguageSelected)
 }
 
 @Composable
-private fun OnboardChooseLanguageScreen() {
+private fun OnboardChooseLanguageScreen(
+    onLanguageSelected: () -> Unit
+) {
     Scaffold { padding ->
         LazyColumn(
             modifier = Modifier
@@ -55,11 +58,19 @@ private fun OnboardChooseLanguageScreen() {
 
             height(16.dp)
 
-            languageCard(drawable = R.drawable.flag_tz, title = R.string.swahili)
+            languageCard(
+                drawable = R.drawable.flag_tz,
+                title = R.string.swahili,
+                onClick = onLanguageSelected
+            )
 
             height(8.dp)
 
-            languageCard(drawable = R.drawable.flag_uk, title = R.string.english)
+            languageCard(
+                drawable = R.drawable.flag_uk,
+                title = R.string.english,
+                onClick = onLanguageSelected
+            )
         }
     }
 }
@@ -83,11 +94,14 @@ private fun LazyListScope.logo() {
 private fun LazyListScope.languageCard(
     modifier: Modifier = Modifier,
     @DrawableRes drawable: Int,
-    @StringRes title: Int
+    @StringRes title: Int,
+    onClick: () -> Unit
 ) {
     item {
         Card(
-            modifier = modifier.width(250.dp),
+            modifier = modifier
+                .width(250.dp)
+                .clickable { onClick() },
             shape = RoundedCornerShape(4.dp),
             elevation = 3.dp,
         ) {
