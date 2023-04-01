@@ -46,8 +46,6 @@ fun OtpView() {
         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number)
     )
 
-    LaunchedEffect(Unit) { focusRequester.requestFocus() }
-
     Row {
         (0 until otpLength).map { index ->
             OtpCell(
