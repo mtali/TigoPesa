@@ -8,7 +8,6 @@
     <string name="next">Next</string>
     <string name="auth_sms_notice">You will shortly receive an SMS with authentication code. Please enter the authentication code in the field below to start using the app</string>
     <string name="authentication_code">Authentication Code</string>
-    <string name="enter_authentication_code">Enter your received authentication code</string>
     <string name="existing_tigo_pesa_pin">Existing Tigo Pesa PIN</string>
     <string name="terms_condition_check_text">By checking this box you agree with terms and conditions</string>
     <string name="register">Register</string>
@@ -20,10 +19,8 @@
     <string name="cash_out">Cash Out</string>
     <string name="government_payments">Government Payments</string>
     <string name="tigo_mobile_shop">Tigo Mobile Shop</string>
-    <string name="ipo">IPO</string>
     <string name="finance_service">Financial Services</string>
     <string name="international_remittance">International Remittance</string>
-    <string name="empty"> </string>
     <string name="more_info">More Info</string>
     <string name="send_money_other_countries">Send Money (Other Countries)</string>
     <string name="home">Home</string>
@@ -43,14 +40,12 @@
     <string name="scan_qr_code_and_pay">Scan QR Code And Pay</string>
     <string name="select_category">Select Category</string>
     <string name="search_by_biller_code_or_name">Search by Biller code or name</string>
-    <string name="you_will_pay_to">You will pay to: </string>
     <string name="reference_number">Reference Number</string>
     <string name="ph_enter_amount_to_pay">Enter amount to pay</string>
     <string name="transfer_to_bank">Transfer to Bank</string>
     <string name="bank_to_wallet">Bank to Wallet</string>
     <string name="cash_out_notice">Visit your agent for withdrawals</string>
     <string name="from">From</string>
-    <string name="ph_amount_to_cash_out">Enter amount to cash out</string>
     <string name="ph_enter_agent_number">Enter a valid Agent Number</string>
     <string name="enter_control_number">Enter control number</string>
     <string name="cancel">Cancel</string>
@@ -66,7 +61,6 @@
     <string name="network">Network</string>
     <string name="select_network">Select network</string>
     <string name="to">To</string>
-    <string name="check_balance">Check Balance</string>
     <string name="your_balance_is">Your balance is:</string>
     <string name="virtual_card_tile">Tigo Pesa Cards</string>
     <string name="loans">Loans</string>
