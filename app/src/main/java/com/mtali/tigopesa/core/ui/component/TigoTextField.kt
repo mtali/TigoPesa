@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.mtali.tigopesa.core.ui.theme.LightBlue
 
 
-val TIGO_TEXT_FIELD_HEIGHT = 50.dp
+val TIGO_TEXT_FIELD_HEIGHT = 54.dp
 
 @Composable
 fun TigoTextField(
