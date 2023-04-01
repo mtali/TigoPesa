@@ -46,12 +46,18 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mtali.tigopesa.R
+import com.mtali.tigopesa.core.ui.component.IconDirection
+import com.mtali.tigopesa.core.ui.component.TigoPesaButton
+import com.mtali.tigopesa.core.ui.component.TigoPesaDialog
 import com.mtali.tigopesa.core.ui.component.TigoToolbar
 import com.mtali.tigopesa.core.ui.component.height
 import com.mtali.tigopesa.core.ui.component.tigoFeatureCard
 import com.mtali.tigopesa.core.ui.theme.Blue
 import com.mtali.tigopesa.core.ui.theme.BrightestGray
+import com.mtali.tigopesa.core.ui.theme.Green
+import com.mtali.tigopesa.core.ui.theme.LightGray
 import com.mtali.tigopesa.core.ui.theme.LogoYellow
+import com.mtali.tigopesa.core.utils.Icon.DrawableResourceIcon
 import com.mtali.tigopesa.feature.home.HomeViewModel.Companion.Banners
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
@@ -69,6 +75,10 @@ fun HomeRoute(
     onFavoritesClick: () -> Unit,
     onNotificationsClick: () -> Unit
 ) {
+
+
+    val dialogState = viewModel.dialogUiState
+
     HomeScreen(
         onSendMoneyClick = onSendMoneyClick,
         onBillPayClick = onBillPayClick,
@@ -78,7 +88,10 @@ fun HomeRoute(
         onInternationalRemittanceClick = onInternationalRemittanceClick,
         onFinanceServiceClick = onFinanceServiceClick,
         onFavoritesClick = onFavoritesClick,
-        onNotificationsClick = onNotificationsClick
+        onNotificationsClick = onNotificationsClick,
+        dialogState = dialogState,
+        onGovernmentPaymentsClick = viewModel::onGovernmentPayClick,
+        onDialogCancel = viewModel::onDialogCancel
     )
 }
 
@@ -93,7 +106,9 @@ private fun HomeScreen(
     onInternationalRemittanceClick: () -> Unit = {},
     onFinanceServiceClick: () -> Unit = {},
     onFavoritesClick: () -> Unit = {},
-    onNotificationsClick: () -> Unit = {}
+    onNotificationsClick: () -> Unit = {},
+    onDialogCancel: () -> Unit = {},
+    dialogState: HomeDialogUiState
 ) {
     Scaffold(
         topBar = {
@@ -132,6 +147,49 @@ private fun HomeScreen(
 
             banners()
         }
+
+        when (dialogState) {
+            HomeDialogUiState.ChoosePaymentMethod -> {
+                ChoosePaymentMethodDialog(onCancel = onDialogCancel)
+            }
+
+            HomeDialogUiState.None -> Unit
+        }
+    }
+}
+
+@Composable
+private fun ChoosePaymentMethodDialog(onCancel: () -> Unit = {}) {
+    TigoPesaDialog(title = R.string.choose_payment_method, onCancel = onCancel) {
+        TigoPesaButton(
+            modifier = Modifier.fillMaxWidth(),
+            title = R.string.scan_qr_code_and_pay,
+            onClick = {},
+            bgColor = Blue,
+            icon = DrawableResourceIcon(R.drawable.ic_qr_search_new),
+            iconDirection = IconDirection.END,
+            uppercase = true
+        )
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        TigoPesaButton(
+            modifier = Modifier.fillMaxWidth(),
+            title = R.string.enter_control_number,
+            onClick = {},
+            bgColor = Green,
+            uppercase = true
+        )
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        TigoPesaButton(
+            modifier = Modifier.fillMaxWidth(),
+            title = R.string.cancel,
+            onClick = onCancel,
+            bgColor = LightGray,
+            uppercase = true
+        )
     }
 }
 

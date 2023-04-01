@@ -52,6 +52,9 @@
     <string name="from">From</string>
     <string name="ph_amount_to_cash_out">Enter amount to cash out</string>
     <string name="ph_enter_agent_number">Enter a valid Agent Number</string>
+    <string name="enter_control_number">Enter control number</string>
+    <string name="cancel">Cancel</string>
+    <string name="choose_payment_method">Choose payment method:</string>
 
 
     <!--Promos-->

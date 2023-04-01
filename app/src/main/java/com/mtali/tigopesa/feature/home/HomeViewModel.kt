@@ -2,6 +2,9 @@ package com.mtali.tigopesa.feature.home
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.mtali.tigopesa.R
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -10,6 +13,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor() : ViewModel() {
+
+
+    var dialogUiState by mutableStateOf<HomeDialogUiState>(HomeDialogUiState.None)
+        private set
+
+    fun onGovernmentPayClick() {
+        dialogUiState = HomeDialogUiState.ChoosePaymentMethod
+    }
+
+    fun onDialogCancel() {
+        dialogUiState = HomeDialogUiState.None
+    }
+
     companion object {
         val Banners = listOf(
             Banner(
@@ -38,6 +54,11 @@ class HomeViewModel @Inject constructor() : ViewModel() {
             ),
         )
     }
+}
+
+sealed interface HomeDialogUiState {
+    object None : HomeDialogUiState
+    object ChoosePaymentMethod : HomeDialogUiState
 }
 
 data class Banner(
