@@ -31,7 +31,6 @@ fun TigoPesaButton(
     uppercase: Boolean = false,
     onClick: () -> Unit = {},
     iconDirection: IconDirection = IconDirection.START
-
 ) {
     Button(
         modifier = modifier,

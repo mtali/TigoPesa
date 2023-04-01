@@ -46,7 +46,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mtali.tigopesa.R
+import com.mtali.tigopesa.core.ui.Height
 import com.mtali.tigopesa.core.ui.component.IconDirection
+import com.mtali.tigopesa.core.ui.component.OtpView
 import com.mtali.tigopesa.core.ui.component.TigoPesaButton
 import com.mtali.tigopesa.core.ui.component.TigoPesaDialog
 import com.mtali.tigopesa.core.ui.component.TigoToolbar
@@ -57,7 +59,9 @@ import com.mtali.tigopesa.core.ui.theme.BrightestGray
 import com.mtali.tigopesa.core.ui.theme.Green
 import com.mtali.tigopesa.core.ui.theme.LightGray
 import com.mtali.tigopesa.core.ui.theme.LogoYellow
+import com.mtali.tigopesa.core.utils.Icon
 import com.mtali.tigopesa.core.utils.Icon.DrawableResourceIcon
+import com.mtali.tigopesa.feature.home.HomeDialogUiState.*
 import com.mtali.tigopesa.feature.home.HomeViewModel.Companion.Banners
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
@@ -91,7 +95,8 @@ fun HomeRoute(
         onNotificationsClick = onNotificationsClick,
         dialogState = dialogState,
         onGovernmentPaymentsClick = viewModel::onGovernmentPayClick,
-        onDialogCancel = viewModel::onDialogCancel
+        onDialogCancel = viewModel::onDialogCancel,
+        onCheckBalanceClick = viewModel::onCheckBalanceClick
     )
 }
 
@@ -108,6 +113,7 @@ private fun HomeScreen(
     onFavoritesClick: () -> Unit = {},
     onNotificationsClick: () -> Unit = {},
     onDialogCancel: () -> Unit = {},
+    onCheckBalanceClick: () -> Unit = {},
     dialogState: HomeDialogUiState
 ) {
     Scaffold(
@@ -130,7 +136,7 @@ private fun HomeScreen(
 
             height(8.dp)
 
-            checkBalanceButton()
+            checkBalanceButton(onCheckBalanceClick = onCheckBalanceClick)
 
             height(20.dp)
 
@@ -149,12 +155,56 @@ private fun HomeScreen(
         }
 
         when (dialogState) {
-            HomeDialogUiState.ChoosePaymentMethod -> {
+            ChoosePaymentMethod -> {
                 ChoosePaymentMethodDialog(onCancel = onDialogCancel)
             }
 
-            HomeDialogUiState.None -> Unit
+            CheckBalanceEnterPin -> CheckBalanceEnterPinDialog(onCancel = onDialogCancel)
+            is ShowBalance -> TODO()
+            None -> Unit
         }
+    }
+}
+
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun CheckBalanceEnterPinDialog(onCancel: () -> Unit) {
+    TigoPesaDialog(title = R.string.check_balance_free, onCancel = onCancel) {
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(text = "Tigo Pesa PIN")
+            Height(size = 8.dp)
+
+            OtpView()
+
+
+            Height(size = 8.dp)
+
+            Row {
+                TigoPesaButton(
+                    modifier = Modifier.weight(1f),
+                    title = R.string.cancel,
+                    onClick = onCancel,
+                    bgColor = LightGray,
+                    uppercase = true
+                )
+
+                Spacer(modifier = Modifier.width(10.dp))
+
+                TigoPesaButton(
+                    modifier = Modifier.weight(1f),
+                    title = R.string.confirm,
+                    onClick = {},
+                    bgColor = Green,
+                    uppercase = true
+                )
+            }
+        }
+
     }
 }
 
@@ -261,12 +311,16 @@ private fun YellowButton(
     }
 }
 
-private fun LazyListScope.checkBalanceButton() {
+private fun LazyListScope.checkBalanceButton(onCheckBalanceClick: () -> Unit = {}) {
     item {
-        YellowButton(
+        TigoPesaButton(
             modifier = Modifier.horizontal(),
-            title = R.string.check_balance,
-            icon = Icons.Outlined.AccountBalance
+            title = R.string.check_balance_free,
+            onClick = { onCheckBalanceClick() },
+            bgColor = LogoYellow,
+            icon = Icon.ImageVectorIcon(Icons.Outlined.AccountBalance),
+            iconDirection = IconDirection.START,
+            textColor = Blue,
         )
     }
 }
@@ -381,9 +435,7 @@ private fun BannerCard(
                     overflow = TextOverflow.Ellipsis
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-                YellowButton(
-                    title = R.string.more_info
-                )
+                YellowButton(title = R.string.more_info)
             }
             Column(
                 Modifier.weight(1f)

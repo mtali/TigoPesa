@@ -152,7 +152,7 @@ private fun LazyListScope.enterPhoneNumber(
                 title = R.string.to_all_networks,
                 placeholder = R.string.ph_enter_phone_number,
                 value = phoneNumber,
-                onChangeValue = onPhoneNumberChange,
+                onValueChange = onPhoneNumberChange,
                 modifier = Modifier.weight(1f),
             )
             Spacer(modifier = Modifier.width(14.dp))

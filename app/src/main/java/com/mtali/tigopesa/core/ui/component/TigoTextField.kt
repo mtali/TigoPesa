@@ -24,7 +24,7 @@ fun TigoTextField(
     modifier: Modifier = Modifier,
     value: String,
     @StringRes title: Int? = null,
-    onChangeValue: (String) -> Unit = {},
+    onValueChange: (String) -> Unit = {},
     enabled: Boolean = true,
     placeholder: Int? = null,
     height: Dp? = TIGO_TEXT_FIELD_HEIGHT,
@@ -40,7 +40,7 @@ fun TigoTextField(
 
         OutlinedTextField(
             value = value,
-            onValueChange = onChangeValue,
+            onValueChange = onValueChange,
             enabled = enabled,
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 disabledBorderColor = LightBlue.copy(0.5f),
@@ -76,7 +76,7 @@ fun LazyListScope.tigoTextField(
             modifier = modifier,
             value = value,
             title = title,
-            onChangeValue = onChangeValue,
+            onValueChange = onChangeValue,
             enabled = enabled,
             placeholder = placeholder,
             height = height

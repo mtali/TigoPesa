@@ -26,6 +26,10 @@ class HomeViewModel @Inject constructor() : ViewModel() {
         dialogUiState = HomeDialogUiState.None
     }
 
+    fun onCheckBalanceClick() {
+        dialogUiState = HomeDialogUiState.CheckBalanceEnterPin
+    }
+
     companion object {
         val Banners = listOf(
             Banner(
@@ -59,6 +63,10 @@ class HomeViewModel @Inject constructor() : ViewModel() {
 sealed interface HomeDialogUiState {
     object None : HomeDialogUiState
     object ChoosePaymentMethod : HomeDialogUiState
+
+    object CheckBalanceEnterPin : HomeDialogUiState
+
+    data class ShowBalance(val amount: Float) : HomeDialogUiState
 }
 
 data class Banner(
