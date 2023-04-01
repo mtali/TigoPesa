@@ -76,7 +76,24 @@
     <string name="need_help_description">We are able to help you, please feel free to ask your questions</string>
     <string name="call_customer_care">Call Customer Care</string>
     <string name="view_details">View Details</string>
-    <string name="my_name">Emmanuel Mtali</string>
+    <string name="my_name">Emmanuel S Mtali</string>
+    <string name="tigo_pesa">Tigo Pesa</string>
+    <string name="tigo_pesa_pin">Tigo Pesa PIN</string>
+    <string name="e_statement">e-Statement</string>
+    <string name="transaction_reversal">Transaction Reversal</string>
+    <string name="my_activities">My Activities</string>
+    <string name="luku_token">LUKU token</string>
+    <string name="my_numbers">My Numbers</string>
+    <string name="unbar">Unbar</string>
+    <string name="get_token">Get Token</string>
+    <string name="mobile_settings">Mobile Settings</string>
+    <string name="device_connected">Device Connected</string>
+    <string name="notification_settings">Notification settings</string>
+    <string name="app_upgrade">App Upgrade</string>
+    <string name="help_center">Help Center</string>
+    <string name="customer_support">Customer support</string>
+    <string name="information">Information</string>
+    <string name="refer_earn">Refer &amp; Earn</string>
 
     <!--Promos-->
     <string name="promo_mastercard_title">Tigo Pesa Mastercard</string>
