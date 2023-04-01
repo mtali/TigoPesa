@@ -75,6 +75,8 @@
     <string name="need_help">Need Help?</string>
     <string name="need_help_description">We are able to help you, please feel free to ask your questions</string>
     <string name="call_customer_care">Call Customer Care</string>
+    <string name="view_details">View Details</string>
+    <string name="my_name">Emmanuel Mtali</string>
 
     <!--Promos-->
     <string name="promo_mastercard_title">Tigo Pesa Mastercard</string>
