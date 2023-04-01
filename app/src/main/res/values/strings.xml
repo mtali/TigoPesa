@@ -68,6 +68,13 @@
     <string name="to">To</string>
     <string name="check_balance">Check Balance</string>
     <string name="your_balance_is">Your balance is:</string>
+    <string name="virtual_card_tile">Tigo Pesa Cards</string>
+    <string name="loans">Loans</string>
+    <string name="insurance">Insurance</string>
+    <string name="savings">Savings</string>
+    <string name="need_help">Need Help?</string>
+    <string name="need_help_description">We are able to help you, please feel free to ask your questions</string>
+    <string name="call_customer_care">Call Customer Care</string>
 
     <!--Promos-->
     <string name="promo_mastercard_title">Tigo Pesa Mastercard</string>

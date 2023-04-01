@@ -40,9 +40,8 @@ fun NavGraphBuilder.homeGraph(
                 onInternationalRemittanceClick = onInternationalRemittanceClick,
                 onFinanceServiceClick = onFinanceServiceClick,
                 onFavoritesClick = onFavoritesClick,
-                onNotificationsClick = onNotificationsClick,
-
-                )
+                onNotificationsClick = onNotificationsClick
+            )
         }
         nestedGraphs()
     }
