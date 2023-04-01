@@ -305,7 +305,7 @@ private fun LazyListScope.selfCareHeaderCard() {
                         maxLines = 1,
                         color = Green,
                         letterSpacing = 0.1.sp,
-                        fontSize = 12.sp
+                        fontSize = 10.sp
 
                     )
                     TigoPesaButton(

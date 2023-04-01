@@ -83,7 +83,7 @@ private fun LazyListScope.helpCard() {
                     Height(size = 4.dp)
                     TigoPesaButton(
                         modifier = Modifier
-                            .height(30.dp)
+                            .height(40.dp)
                             .fillMaxWidth(),
                         title = R.string.call_customer_care,
                         bgColor = Blue
