@@ -19,13 +19,18 @@ import com.mtali.tigopesa.core.ui.theme.BrightestGray
 
 @Composable
 fun TigoPesaApp(appState: TigoPesaAppState = rememberTigoPesaAppState()) {
+
+    val hasBottomNavigation = appState.currentDestination.hasBottomNavigation()
+
     Scaffold(
         bottomBar = {
-            TigoPesaBottomBar(
-                destinations = TopLevelDestination.values().toList(),
-                currentDestination = appState.currentDestination,
-                onNavigateToDestination = appState::navigateToTopLevelDestination
-            )
+            if (hasBottomNavigation) {
+                TigoPesaBottomBar(
+                    destinations = TopLevelDestination.values().toList(),
+                    currentDestination = appState.currentDestination,
+                    onNavigateToDestination = appState::navigateToTopLevelDestination
+                )
+            }
         }
     ) { padding ->
         Column(

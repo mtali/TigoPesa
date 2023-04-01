@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.navOptions
 import com.mtali.tigopesa.feature.banking.navigation.bankingScreen
 import com.mtali.tigopesa.feature.banking.navigation.navigateToBanking
 import com.mtali.tigopesa.feature.bill_pay.navigation.billPayScreen
@@ -83,7 +84,12 @@ fun TigoPesaNavHost(
 
         registerDeviceScreen(
             onBackClick = onBackClick,
-            onDeviceRegistered = { navController.navigateToHome() }
+            onDeviceRegistered = { navController.navigateToHome(navOptions = popStartNavOptions()) }
         )
     }
+}
+
+fun popStartNavOptions() = navOptions {
+    popUpTo(0)
+    launchSingleTop = true
 }

@@ -11,10 +11,10 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import com.mtali.tigopesa.app.navigation.TopLevelDestination
 import com.mtali.tigopesa.core.utils.trace
-import com.mtali.tigopesa.feature.home.navigation.homeRoute
 import com.mtali.tigopesa.feature.home.navigation.navigateToHome
+import com.mtali.tigopesa.feature.oboarding_choose_language.navigation.onboardingRoute
+import com.mtali.tigopesa.feature.register_device.navigation.registerDeviceRoute
 import com.mtali.tigopesa.feature.self_care.navigation.navigateToSelfCare
-import com.mtali.tigopesa.feature.self_care.navigation.selfCareRoute
 
 @Composable
 fun rememberTigoPesaAppState(
@@ -33,13 +33,6 @@ class TigoPesaAppState(
     val currentDestination: NavDestination?
         @Composable get() = navController
             .currentBackStackEntryAsState().value?.destination
-
-    val currentTopLevelDestination: TopLevelDestination?
-        @Composable get() = when (currentDestination?.route) {
-            homeRoute -> TopLevelDestination.HOME
-            selfCareRoute -> TopLevelDestination.SELF_CARE
-            else -> null
-        }
 
     fun navigateToTopLevelDestination(destination: TopLevelDestination) {
         trace("Navigation: ${destination.name}") {
@@ -62,5 +55,16 @@ class TigoPesaAppState(
 
     fun onBackClick() {
         navController.popBackStack()
+    }
+}
+
+fun NavDestination?.hasBottomNavigation(): Boolean {
+    return when (this?.route) {
+        registerDeviceRoute,
+        onboardingRoute -> {
+            false
+        }
+
+        else -> true
     }
 }
