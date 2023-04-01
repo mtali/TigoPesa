@@ -55,6 +55,10 @@
     <string name="enter_control_number">Enter control number</string>
     <string name="cancel">Cancel</string>
     <string name="choose_payment_method">Choose payment method:</string>
+    <string name="top_up">Top Up</string>
+    <string name="buy_bundle">Buy Bundle</string>
+    <string name="lend_services">Lend Me Services</string>
+    <string name="mobile_self_care">Mobile Self Care Services</string>
 
 
     <!--Promos-->

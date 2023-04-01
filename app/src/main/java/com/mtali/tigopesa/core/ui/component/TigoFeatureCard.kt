@@ -18,7 +18,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.mtali.tigopesa.core.ui.theme.Blue
 
 val featureHeight = 80.dp
 val featureVerticalSpacing = 16.dp
@@ -28,8 +31,9 @@ val featureVerticalSpacing = 16.dp
 fun TigoFeatureCard(
     modifier: Modifier = Modifier,
     @DrawableRes icon: Int,
+    iconSize: Dp = 40.dp,
     @StringRes title: Int?,
-    onClick: () -> Unit = {}
+    onClick: () -> Unit = {},
 ) {
     Card(
         modifier = modifier
@@ -46,9 +50,9 @@ fun TigoFeatureCard(
             Image(
                 painter = painterResource(id = icon),
                 contentDescription = null,
-                modifier = Modifier.size(40.dp)
+                modifier = Modifier.size(iconSize)
             )
-            title?.let { Text(text = stringResource(id = title)) }
+            title?.let { Text(text = stringResource(id = title), fontSize = 15.sp, color = Blue) }
         }
     }
 }
@@ -57,6 +61,7 @@ fun TigoFeatureCard(
 fun LazyGridScope.tigoFeatureCard(
     modifier: Modifier = Modifier,
     @DrawableRes icon: Int,
+    iconSize: Dp = 40.dp,
     @StringRes title: Int?,
     onClick: () -> Unit = {}
 ) {
@@ -65,6 +70,7 @@ fun LazyGridScope.tigoFeatureCard(
             modifier = modifier,
             icon = icon,
             title = title,
+            iconSize = iconSize,
             onClick = onClick
         )
     }
