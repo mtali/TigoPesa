@@ -34,5 +34,5 @@ Check out the demo video of the TigoPesa app [here](docs/Tigo.mp4).
 ## Contributions
 Contributions are welcome! Feel free to fork this repository and submit a pull request.
 
-## Credits
-Thanks Tigo Tanzania for inspiration
+## Disclainer
+This project is not affiliated with, endorsed by, or sponsored by Tigo or any of its subsidiaries or affiliates. Any use of this trademark is solely for identification purposes and does not imply any endorsement or affiliation with Tigo Inc.
