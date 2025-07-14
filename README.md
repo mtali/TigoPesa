@@ -4,15 +4,15 @@ Jetpack Compose clone of Tigo Pesa App, an opportunity to showcase Android devel
 ## Screenshots
 
 <p align="center">
-<img src="docs/language.png" width="25%" height="25%"/>
+<img src="docs/language.png" width="200px" />
 
-<img src="docs/auth.png" width="25%" height="25%"/>
+<img src="docs/auth.png" width="200px" />
 
-<img src="docs/home.png" width="25%" height="25%"/>
+<img src="docs/home.png" width="200px" />
 
-<img src="docs/self_service.png" width="25%" height="25%"/>
+<img src="docs/self_service.png" width="200px" />
 
-<img src="docs/otp.png" width="25%" height="25%"/>
+<img src="docs/otp.png" width="200px%" />
 </p>
 
 ## Technologies Used
